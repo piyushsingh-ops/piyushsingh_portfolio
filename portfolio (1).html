@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piyush Kumar Singh - Software Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #fafaf8;
+            --color-text: #1a1a1a;
+            --color-accent: #2a2a2a;
+            --color-border: #d4d4d0;
+            --color-light: #8a8a86;
+            --spacing-unit: 1.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 4rem 0 2rem;
+            border-bottom: 1px solid var(--color-border);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        nav {
+            margin-top: 2rem;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--color-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            border-top: 1px solid var(--color-border);
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        .about-box {
+            border: 1px solid var(--color-border);
+            padding: 3rem;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-label {
+            font-size: 1.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .about-content {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            line-height: 1.9;
+            max-width: 650px;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 0;
+            border-top: 1px solid var(--color-border);
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .skill-category:nth-child(1) {
+            background-color: #f8f4f0;
+        }
+
+        .skill-category:nth-child(2) {
+            background-color: #f0f4f8;
+        }
+
+        .skill-category:nth-child(3) {
+            background-color: #f4f0f8;
+        }
+
+        .skill-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: var(--color-light);
+            font-size: 0.95rem;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .skill-list li:hover {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-border);
+            padding-left: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            border-top: 1px solid var(--color-border);
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+
+        .contact-box {
+            border: 1px solid var(--color-border);
+            padding: 3rem;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            color: var(--color-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .email-link {
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .email-link:hover {
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--color-border);
+            margin-top: 5rem;
+            text-align: center;
+            color: var(--color-light);
+            font-size: 0.85rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--color-light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            header {
+                padding: 3rem 0 1.5rem;
+            }
+
+            nav {
+                gap: 1.5rem;
+            }
+
+            .about,
+            .skills,
+            .contact {
+                padding: 3rem 0;
+            }
+
+            .about-box,
+            .contact-box {
+                padding: 2rem;
+            }
+
+            .skill-category {
+                padding: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Piyush Kumar Singh</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-label">About</div>
+                <div class="about-box">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p>I tend to be a visionary engineer who wants to solve problems in creative and innovative ways which can also help in real world applications. I specialize in creating scalable solutions that prioritize user experience and code maintainability.</p>
+                            <p>I am currently pursuing my B Tech in computer science from KIET Ghaziabad, meanwhile I am working on building my own projects in topics I am interested in.</p>
+                            <p>My interests include coding, programming, problem solving and I am also quite interested in game development and designing, have been creating a few environment designs in Unity game engine for some time and would love to share with the world when completed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <div class="container">
+                <div class="section-label">Skills/Expertise</div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>C</li>
+                            <li>C++</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <ul class="skill-list">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Profiles</h3>
+                        <ul class="skill-list">
+                            <li><a href="https://github.com/piyushsingh-ops" target="_blank" style="color: inherit; text-decoration: none;">GitHub</a></li>
+                            <li><a href="https://www.linkedin.com/in/piyush-singh-820766388" target="_blank" style="color: inherit; text-decoration: none;">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-label">Contact Me</div>
+                <div class="contact-box">
+                    <p class="contact-text">Feel free to reach out to me via email:</p>
+                    <a href="mailto:piyushsingh070315@gmail.com" class="email-link">piyushsingh070315@gmail.com</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/piyushsingh-ops" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/piyush-singh-820766388" target="_blank">LinkedIn</a>
+            </div>
+            <p>© 2026 Piyush Kumar Singh. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListe
